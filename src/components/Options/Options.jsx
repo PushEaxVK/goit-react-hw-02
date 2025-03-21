@@ -1,6 +1,6 @@
 import css from './Options.module.css';
 
-const Options = ({ callback }) => {
+const Options = ({ callback, feedback }) => {
   return (
     <ul className={css.options}>
       <li>
@@ -12,6 +12,11 @@ const Options = ({ callback }) => {
       <li>
         <button onClick={() => callback('bad')}>Bad</button>
       </li>
+      {feedback > 0 && (
+        <li>
+          <button onClick={() => callback('reset')}>Reset</button>
+        </li>
+      )}
     </ul>
   );
 };
