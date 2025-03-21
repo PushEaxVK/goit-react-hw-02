@@ -11,11 +11,19 @@ function App() {
     bad: 0,
   });
 
+  const updateFeedback = feedbackType => {
+    const newState = { ...state };
+    if (feedbackType in newState) {
+      newState[feedbackType] = state[feedbackType] + 1;
+      setState(newState);
+    }
+  };
+
   return (
     <>
       <Description />
-      <Options />
-      <Feedback />
+      <Options callback={updateFeedback} />
+      <Feedback good={state.good} bad={state.bad} neutral={state.neutral} />
     </>
   );
 }
